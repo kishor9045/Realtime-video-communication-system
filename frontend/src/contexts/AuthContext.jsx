@@ -49,7 +49,8 @@ const AuthProvider = ({children}) => {
             const getHistory = await axiosBaseURL.get("getAllActivity", {
                 params: {
                     token: sessionStorage.getItem("token")
-                }
+                },
+                withCredentials: true
             })
 
             return getHistory.data;
@@ -63,7 +64,7 @@ const AuthProvider = ({children}) => {
             const addHistory = await axiosBaseURL.post("addToActivity", {
                 token: sessionStorage.getItem("token"),
                 meetingCode: meetingCode
-            });
+            }, {withCredentials: true});
             return addHistory.data;
         }catch(err){
             throw err;
@@ -72,7 +73,7 @@ const AuthProvider = ({children}) => {
 
     const handleIceServers = async () => {
         try{
-            const iceServers = await axiosBaseURL.get("turnServer");
+            const iceServers = await axiosBaseURL.get("turnServer", {withCredentials: true});
             return iceServers.data;
         }catch(err){
             throw err;
