@@ -12,7 +12,8 @@ const server = createServer(app);
 
 
 app.use(cors({
-    origin: "http://localhost:5174",
+    // origin: "http://localhost:5174",
+    origin: "https://confexio.onrender.com/",
     methods: ["GET", "POST", "PUT"],
     credentials: true
 }));
