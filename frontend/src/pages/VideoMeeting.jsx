@@ -194,7 +194,7 @@ export const VideoMeeting = () => {
             // host: "localhost",
             // port: '4000',
             // secure: false,
-            host: "https://realtime-video-communication-system.onrender.com",
+            host: "realtime-video-communication-system.onrender.com",
             path: "/peerjs",
             secure: true,
             config: {
