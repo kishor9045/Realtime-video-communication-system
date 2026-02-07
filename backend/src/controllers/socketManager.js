@@ -7,7 +7,7 @@ let messages = {};
 export const connectToSocket = (server) => {
     const io = new Server(server, {
         cors: {
-            origin: "*",
+            origin: "https://confexio.onrender.com/",
             methods: ['GET', 'POST', 'PUT'],
             credentials: true
         }
