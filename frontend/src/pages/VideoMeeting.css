@@ -1,0 +1,316 @@
+.beforeOuterContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.beforeOuterContainer h1{
+    font-weight: 500;
+    margin-top: 1.8rem;
+}
+
+.beforeContainer{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    margin-top: 2%;
+}
+
+.beforeVideoContainer{
+    height: 430px;
+    width: 750px;
+    display: flex;
+}
+
+.beforeVideo{
+    flex: 1;
+    object-fit: cover;
+    border-radius: 2rem;
+}
+
+.beforeFormContainer h2{
+    font-size: 1.75rem;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.beforeFormContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3%;
+}
+
+.beforeFormContainer input{
+    height: 3.2rem;
+    padding: 0 1rem;
+    border: 1px solid #161616;
+    border-radius: 1rem;
+    font-size: 15px;
+}
+
+.beforeFormContainer .btn{
+    background-color: rgb(43, 93, 241);
+    width: 100%;
+    color: #fff;
+    padding: 20px 15px;
+    border: none;
+    border-radius: 1.8rem;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn:hover{
+    background-color: rgb(2, 112, 255);
+    cursor: pointer;
+}
+
+.outerVideoGrid{
+    position: relative;
+}
+
+.meetVideoContainer{
+    height: 100vh;
+    /* background-color: #161616; */
+    background: linear-gradient(90deg, #102A43,#0F172A);
+    overflow: hidden;
+}
+
+.videoGridContainer{
+    height: 92vh;
+    width: 100vw;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.vidMeetContainer{
+    flex: 1;
+    position: relative;
+}
+
+.miniLocalStream{
+    position: absolute;
+    bottom: 30px;
+    right: 20px
+}
+
+.miniLocalStream video{
+    height: 20vh;
+    width: 15vw;
+    border-radius: 12px;
+    min-width: 230px;
+    min-height: 165px;
+    object-fit: cover;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.35),
+        0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.videoGrid{
+    height: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 8px;
+}
+
+.videoGrid video{
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    max-height: 744px;
+    object-fit: cover;
+}
+
+.messageContainer{
+    display: none;
+    flex-direction: column;
+    height: 98%;
+    width: 25%;
+    min-width: 290px;
+    border-radius: 20px;
+    margin: 8px 8px 8px 0;
+    transition:
+        transform 0.3s ease,
+        opacity 0.25s ease;
+}
+
+.messageLightContainer{
+    background-color: #fff;
+}
+
+.messageContainer h2{
+    padding-left: 1.5rem;
+}
+
+.msgTopContainer{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 1.5rem;
+}
+
+.msgMainContainer{
+    display: flex;
+}
+
+.msgMainContainer > div{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 560px;
+    padding: 0.65rem 0.75rem 0.65rem 0.75rem;
+    gap: 0.625rem;
+}
+
+.msgMainContainer > div::-webkit-scrollbar{
+    width: 8px;
+}
+
+.msgMainContainer > div::-webkit-scrollbar-thumb{
+    background-color: #cacaca;
+    border-radius: 5px;
+}
+
+.msgBox{
+    padding: 12px;
+    max-width: 13.75rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    border-radius: 1.25rem;
+    /* border-bottom-right-radius: 4px; */
+}
+
+.sender{
+    background-color: #1F6FEA;
+    color: #fff;
+    align-self: flex-end;
+}
+
+.receiver{
+    background-color: #F1F3F5;
+    color: #1C1E21;
+    align-self: flex-start;
+}
+
+.msgBox p{
+    margin: 0;
+}
+
+.msgBox p:nth-child(1){
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.msgBox p:nth-child(2){
+    font-size: 14px;
+}
+
+.msgBottomContainer{
+    width: 100%;
+}
+
+.msgBottomContainer div{
+    margin: 15px;
+    height: 3rem;
+    border-radius: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.msgLightBottomContainer div{
+    border: 2px solid #565555;
+}
+
+.msgLightBottomContainer div:focus-within{
+    border: 2px solid #0c0c0c;
+}
+
+.msgBottomContainer div input{
+    height: 90%;
+    margin-left: 1rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+/* Dark theme */
+.messageDarkContainer{
+    background-color: #1e1f20;
+}
+
+.messageDarkContainer h2{
+    color: #fff;
+}
+
+.msgDarkMainContainer{
+    color: #fff;
+}
+
+.msgDarkBottomContainer div{
+    border: 2px solid #5c5b5b;
+}
+
+.msgDarkBottomContainer div:focus-within{
+    border: 2px solid #818080;
+}
+
+.msgDarkBottomContainer div input{
+    color: #fff;
+}
+
+.msgDarkBottomContainer div button{
+    opacity: 0.7;
+}
+
+.msgDarkBottomContainer div button:active{
+    opacity: 1;
+}
+
+.bottomHorizontalContainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.btnsContainer button svg{
+    color: #fff;
+}
+
+#endcall:hover{
+    background-color: rgb(248, 74, 74);
+}
+
+.copyLinkOuter{
+    position: relative;
+}
+
+.copyLink{
+    display: none;
+    position: absolute;
+    height: 200px;
+    width: auto;
+    background-color: #fff;
+    bottom: 0;
+    right: 2px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.copyLink div{
+    display: flex;
+    justify-content: space-around;
+}
+
+.copyLink div p{
+    background-color: #e0dfdf;
+    margin: 0;
+    padding: 16px;
+    border-radius: 20px;
+}
+
+.copyLink div button{
+    width: 50px;
+}

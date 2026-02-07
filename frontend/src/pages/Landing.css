@@ -1,0 +1,133 @@
+.landingPageContainer{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 1.2rem;
+}
+
+.navbar div h2{
+    font-size: 1.8rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.navbar div:nth-child(2){
+    display: flex;
+    align-items: center;
+    gap: 1.7rem;
+}
+
+.navbar div:nth-child(2) a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar div:nth-child(2) a:hover{
+    text-decoration: underline;
+}
+
+.navbar div:nth-child(2) button{
+    background-color: #D97500;
+    padding: 10px 20px;
+    padding-top: 13px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar div:nth-child(2) button:hover{
+    background-color: #FF9839;
+    padding-top: 10px;
+}
+
+.landingPageContainer main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1.7rem;
+}
+
+main .outer-wrap{
+    padding: 1.2rem;
+    font-size: 1.4rem;
+    margin-bottom: 5%;
+}
+
+main .mobileImg{
+    padding: 1.2rem;
+}
+
+main div h1{
+    margin: 0;
+}
+
+main div h1 span{
+    color: #FF9839;
+}
+
+main .wrapper{
+    display: inline-flex;
+}
+
+.wrapper ul{
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper li{
+    list-style-type: none;
+}
+
+.dynamicText li h1{
+    position: relative;
+}
+
+.dynamicText li h1{
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0%;
+    border-right: 1px solid #fff;
+    animation: typing 5.5s steps(40) infinite normal,
+                cursor 0.4s step-end infinite alternate;
+}
+
+@keyframes cursor{
+    50%{
+        border-color: transparent;
+    }
+}
+
+@keyframes typing {
+    40%, 60% {width: 100%;}
+}
+
+main div button{
+    background-color: #D97500;
+    padding: 0.7rem 1rem;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 1rem;
+    border: none;
+    padding-top: 15px;
+    cursor: pointer;
+}
+
+main div button:hover{
+    background-color: #FF9839;
+    padding-block: 0.7rem;
+}

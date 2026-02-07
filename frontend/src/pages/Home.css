@@ -1,0 +1,94 @@
+.homeOuterContainer{
+    height: 100vh;
+    width: 100vw;
+}
+
+.homeNavbar{
+    padding-inline: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border-bottom: 1px solid #e5e7eb; */
+    /* background-color: #EEF2F7; */
+}
+
+.homeNavbar div:nth-child(1) h2{
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.homeNavbar div:nth-child(2){
+    display: flex;
+    gap: 1.7rem;
+}
+
+.HomeMeetContiainer{
+    display: flex;
+    padding-inline: 20px;
+    height: 80vh;
+    gap: 10vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.historyBtn {
+  background-color: #fff !important;
+  border-color: #cbd5e1 !important;
+  color: #2563eb !important;
+  border-radius: 8px !important;
+  text-transform: none !important;
+}
+
+.historyBtn:hover {
+  background-color: #eef2ff !important;
+}
+
+.logoutBtn {
+  border-radius: 8px !important;
+  text-transform: none !important;
+}
+
+.HomeLeftPanel {
+  max-width: 520px;
+}
+
+.HomeLeftPanel h1 {
+  margin-bottom: 24px;
+}
+
+.joinBox {
+  display: flex;
+  gap: 12px;
+}
+
+.joinBox input {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.joinBox input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.joinBtn {
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+  transition: all 0.2s ease;
+}
+
+.joinBtn:hover {
+  background-color: #1d4ed8;
+}
