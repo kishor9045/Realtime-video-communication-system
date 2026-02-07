@@ -5,7 +5,8 @@ import httpStatus from "http-status";
 export const AuthContext = createContext();
 
 const axiosBaseURL = axios.create({
-    baseURL: "http://localhost:4000/api/v1/users"
+    // baseURL: "http://localhost:4000/api/v1/users"
+    baseURL: "https://realtime-video-communication-system.onrender.com/api/v1/users"
 })
 
 const AuthProvider = ({children}) => {

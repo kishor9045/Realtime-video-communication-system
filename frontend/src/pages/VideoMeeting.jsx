@@ -185,15 +185,18 @@ export const VideoMeeting = () => {
     try{
         if(socketRef.current) return;
 
-        socketRef.current = io("http://localhost:4000");
+        // socketRef.current = io("http://localhost:4000");
+        socketRef.current = io("https://realtime-video-communication-system.onrender.com");
 
         const iceServers = await handleIceServers();
 
         peerRef.current = new Peer(undefined, {
-            host: "localhost",
-            port: '4000',
+            // host: "localhost",
+            // port: '4000',
+            // secure: false,
+            host: "https://realtime-video-communication-system.onrender.com",
             path: "/peerjs",
-            secure: false,
+            secure: true,
             config: {
                 iceServers: iceServers,
                 iceTransportPolicy: "all"
