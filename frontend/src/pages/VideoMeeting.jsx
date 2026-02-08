@@ -207,7 +207,9 @@ export const VideoMeeting = () => {
             }
         });
         
-        socketIdRef.current = socketRef.current.id;
+        socketRef.current.on("connect", () => {
+            socketIdRef.current = socketRef.current.id;
+        })
 
         if((videoAvailable && video) || (audioAvailable && audio)){
           navigator.mediaDevices.getUserMedia({video: true, audio: true}).then((stream) => {
