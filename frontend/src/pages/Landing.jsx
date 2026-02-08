@@ -95,7 +95,9 @@ export const Landing = () => {
           <p>Cover a distance by confexio video meet</p>
           <button onClick={() => navigate("/auth")}>Get Started.</button>
         </div>
-        <img src="mobile.png" alt="mobileImg" height="600" className="mobileImg"/>
+        <div className="LandingRightImgContainer">
+          <img src="mobile.png" alt="mobileImg"  className="mobileImg"/>
+        </div>
       </main>
     </div>
   )

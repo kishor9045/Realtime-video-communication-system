@@ -99,7 +99,8 @@
     height: 20vh;
     width: 15vw;
     border-radius: 12px;
-    min-width: 230px;
+    min-width: 130px;
+    max-width: 230px;
     min-height: 165px;
     object-fit: cover;
     box-shadow:
@@ -313,4 +314,18 @@
 
 .copyLink div button{
     width: 50px;
+}
+
+@media (max-aspect-ratio : 6/10){
+    .bottomHorizontalContainer{
+        padding: 0 1rem;
+        align-items: center;
+    }
+    .btnsContainer{
+        display: flex;
+        align-items: center;
+    }
+    .bottomLeftTimeContainer p{
+        font-size: 12px;
+    }
 }

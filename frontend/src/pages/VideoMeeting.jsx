@@ -108,7 +108,6 @@ export const VideoMeeting = () => {
     }, []);
 
     useEffect(() => {
-        // console.log(videoAvailable, audioAvailable);
             if(videoAvailable || audioAvailable){
                 navigator.mediaDevices.getUserMedia({video: videoAvailable, audio: audioAvailable}).then((userMediaStream) => {
                     if(userMediaStream){
@@ -192,6 +191,7 @@ export const VideoMeeting = () => {
 
         peerRef.current = new Peer(undefined, {
             // host: "localhost",
+            // path: "/peerjs",
             // port: '4000',
             // secure: false,
             host: "realtime-video-communication-system.onrender.com",

@@ -29,6 +29,7 @@
     gap: 10vw;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .historyBtn {

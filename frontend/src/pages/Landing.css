@@ -131,3 +131,47 @@ main div button:hover{
     background-color: #FF9839;
     padding-block: 0.7rem;
 }
+
+@media (max-aspect-ratio : 6/10){
+    .navbar{
+        padding-inline: 0.8rem;
+        width: 82vw;
+    }
+    .navbar div h2{
+        font-size: 1rem;
+    }
+    .navbar div:nth-child(2){
+        gap: 0.7rem;
+        justify-content: space-evenly;
+    }
+    .navlist a{
+        font-size: 12px;
+    }
+    .navbar div:nth-child(2) button{
+        font-size: 12px;
+    }
+    .landingPageContainer main{
+        padding: 0.7rem;
+        margin-top: 1rem;
+    }
+    main .outer-wrap{
+        padding: 0.7rem;
+    }
+    .wrapper h1{
+        font-size: 1.4rem;
+    }
+    .outer-wrap p{
+        font-size: 1rem;
+    }
+    .outer-wrap button{
+        font-size: 0.8rem;
+    }
+    .LandingRightImgContainer{
+        display: flex;
+        width: 330px;
+    }
+    main .mobileImg{
+        padding: 0.5rem;
+        width: 100%;
+    }
+}
