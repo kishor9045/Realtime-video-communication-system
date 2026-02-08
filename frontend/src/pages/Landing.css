@@ -135,7 +135,6 @@ main div button:hover{
 @media (max-aspect-ratio : 6/10){
     .navbar{
         padding-inline: 0.8rem;
-        width: 82vw;
     }
     .navbar div h2{
         font-size: 1rem;

@@ -17,6 +17,8 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import InfoOutlineIcon from '@mui/icons-material/InfoOutline';
 import ScrollToBottom from "react-scroll-to-bottom";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
 import { SnackbarContent } from '@mui/material';
 import {io} from "socket.io-client";
@@ -52,7 +54,9 @@ export const VideoMeeting = () => {
     const [currTime, setCurrTime] = useState(new Date());
     const [askForUsername, setAskForUsername] = useState(true);
     const [username, setUsername] = useState("");
+    const [allUsers, setAllUsers] = useState();
     const [info, setInfo] = useState(false);
+    const [joinBoxOpen, setJoinBoxOpen] = useState(false);
     const [meetingCode, setMeetingCode] = useState("");
     const [snackOpen, setSnackOpen] = useState();
 
@@ -203,9 +207,8 @@ export const VideoMeeting = () => {
             }
         });
         
-        socketRef.current.on("connect", () => {
-            socketIdRef.current = socketRef.current.id;
-        })
+        socketIdRef.current = socketRef.current.id;
+
         if((videoAvailable && video) || (audioAvailable && audio)){
           navigator.mediaDevices.getUserMedia({video: true, audio: true}).then((stream) => {
             localStreamRef.current = stream;
@@ -243,9 +246,13 @@ export const VideoMeeting = () => {
           
             peerRef.current.on("open", (id) => {
               console.log(id);
-              socketRef.current.emit("join-room", roomId, id, window.location.href);
+              socketRef.current.emit("join-room", roomId, id, window.location.href, username);
               window.peerId = id;
             });
+
+            socketRef.current.on("allConnectedUsers", ({allUser}) => {
+                setAllUsers(allUser);
+            })
 
             socketRef.current.on("reconnect", () => {
                 socketRef.current.emit("join-room", roomId, window.peerId);
@@ -425,7 +432,6 @@ export const VideoMeeting = () => {
     }, [screenSharing]);
 
     const handleMessageBoxOpen = () => {
-        console.log(openMessageBox)
         setOpenMessageBox(!openMessageBox);
         setNewMessages(0);
     }
@@ -492,7 +498,6 @@ export const VideoMeeting = () => {
                 </div> 
             </> : <>
             <div className="meetVideoContainer">
-                {/* <h1>{username}</h1> */}
                 <div className="videoGridContainer">
                     <div className="vidMeetContainer">
                         <div className="miniLocalStream"></div>
@@ -554,7 +559,12 @@ export const VideoMeeting = () => {
                     <div className="bottomRightInfoContainer">
                         <div className="copyLinkOuter">
                             <div className="copyLink" style={info ? {display: "block"} : {display: "none"}}>
-                                <p><b>Your meeting's ready </b></p>
+                                <div>
+                                    <h3>Your meeting's ready</h3>
+                                    <IconButton onClick={() => setInfo(!info)}>
+                                        <CloseIcon/>
+                                    </IconButton>
+                                </div>
                                 <p>share this meeting link with others that you want to join.</p>
                                 <div>
                                     <p>{window.location.href}</p>
@@ -562,10 +572,32 @@ export const VideoMeeting = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className="joinedUsersOuter">
+                            <div className="joinedUsers" style={joinBoxOpen ? {display: "flex"} : {display: "none"}}>
+                                <div>
+                                    <h2>Joined users</h2>
+                                    <IconButton onClick={() => setJoinBoxOpen(!joinBoxOpen)}>
+                                        <CloseIcon />
+                                    </IconButton>
+                                </div>
+                                <div className="allJoinedUsers">
+                                    <ul>
+                                        {
+                                            allUsers ? allUsers.map((user, index) => (
+                                                <li key={index}>{user.username} {user.peerId === peerRef.current.id ? "(You)": ""}</li>
+                                            )) : <p style={{textAlign: "center"}}>No users has joined yet</p>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                         <p>
-                            <IconButton onClick={() => setInfo(!info)} >
-                                <InfoOutlineIcon sx={{color: "#fff"}}/>
-                            </IconButton>
+                           <IconButton onClick={() => setJoinBoxOpen(!joinBoxOpen)}>
+                               <SupervisorAccountIcon sx={{color: "#fff"}}/>
+                           </IconButton>
+                           <IconButton onClick={() => setInfo(!info)} >
+                               <InfoOutlineIcon sx={{color: "#fff"}}/>
+                           </IconButton>
                         </p>
                     </div>
                 </div>

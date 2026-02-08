@@ -3,7 +3,8 @@ import {Server} from "socket.io";
 const connections = {};
 const timeOnline = {};
 let messages = {};
-
+let allUsers = {};
+ 
 export const connectToSocket = (server) => {
     const io = new Server(server, {
         cors: {
@@ -16,15 +17,20 @@ export const connectToSocket = (server) => {
     io.on("connection", (socket) => {
         console.log("user connected", socket.id);
 
-        socket.on("join-room", (roomId, userId, path) => {
+        socket.on("join-room", (roomId, userId, path, username) => {
             if(connections[path] === undefined){
                 connections[path] = [];
             }
             connections[path].push(socket.id);
             timeOnline[socket.id] = new Date();
-            
+
+            if(allUsers[path] === undefined){
+                allUsers[path] = [];
+            }
+            allUsers[path].push({socketId: socket.id, peerId: userId, username});
             socket.join(roomId);
             socket.broadcast.to(roomId).emit("user-connected", userId);
+            io.to(roomId).emit("allConnectedUsers", {allUser: allUsers[path]});
 
             if(messages[path] !== undefined){
                 for(let a = 0; a < messages[path].length; ++a){
@@ -35,6 +41,7 @@ export const connectToSocket = (server) => {
             socket.on("disconnect", () => {
                 socket.to(roomId).emit("user-disconnected", userId);
                 messages = {};
+                allUsers = {};
             })
         });
 

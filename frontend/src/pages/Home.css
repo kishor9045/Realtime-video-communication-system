@@ -93,3 +93,18 @@
 .joinBtn:hover {
   background-color: #1d4ed8;
 }
+
+@media(max-aspect-ratio : 6/10){
+  .homeNavbar{
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .homeNavbar div:nth-child(1) h2{
+    font-size: 1.2rem;
+  }
+  .homeNavbar div:nth-child(2){
+    gap: 0.8rem;
+  }
+  .HomeRightPanel img{
+    height: 300px;
+  }
+}

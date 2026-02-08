@@ -293,14 +293,26 @@
     position: absolute;
     height: 200px;
     width: auto;
-    background-color: #fff;
+    background-color: #f5f5f5;
     bottom: 0;
     right: 2px;
     border-radius: 20px;
     padding: 10px;
 }
 
-.copyLink div{
+.copyLink > p {
+    padding-inline: 5px;
+    margin-top: 0;
+}
+
+.copyLink div:nth-child(1){
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 8px;
+}
+
+.copyLink div:nth-child(3){
     display: flex;
     justify-content: space-around;
 }
@@ -312,8 +324,51 @@
     border-radius: 20px;
 }
 
-.copyLink div button{
+.copyLink div:nth-child(3) button{
     width: 50px;
+    height: 50px;
+}
+
+.joinedUsersOuter{
+    position: relative;
+}
+
+.joinedUsers{
+    position: absolute;
+    height: 400px;
+    width: 300px;
+    background-color: #f5f5f5;
+    bottom: 0;
+    right: 2px;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.joinedUsers div:nth-child(1){
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.allJoinedUsers{
+    height: 100%;
+    overflow-y: auto;
+}
+
+.allJoinedUsers ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.allJoinedUsers ul li{
+    font-size: 1.1rem;
+    font-weight: 500;
+    background: rgb(204, 204, 204);
+    padding: 10px;
+    border-radius: 10px;
+    margin-block: 10px;
 }
 
 @media (max-aspect-ratio : 6/10){

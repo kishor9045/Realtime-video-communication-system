@@ -34,12 +34,11 @@ const AuthProvider = ({children}) => {
                 username,
                 password
             }, {withCredentials: true});
-            if(login.status === httpStatus.OK){
-                sessionStorage.setItem("token", login.data.token)
+            if(login && login.status === httpStatus.OK){
+                sessionStorage.setItem("token", login.data.token);
                 return login.data.message
             }
         } catch(err){
-            console.log(err);
             throw err;
         }
     }

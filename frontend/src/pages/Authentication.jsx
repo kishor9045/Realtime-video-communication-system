@@ -2,6 +2,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -25,6 +26,7 @@ export function Authentication() {
   const [open, setOpen] = useState();
   const [error, setError] = useState("");
   const [formState, setFormState] = useState(0);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {handleRegister, handleLogin} = useContext(AuthContext);
   const navigate = useNavigate();
@@ -73,7 +75,6 @@ export function Authentication() {
     <ThemeProvider theme={defaultTheme}>
       <Grid container>
         <CssBaseline />
-        <Box component={"img"} src='loginImg.png' alt='loginImg' sx={{height:"825px", maxHeight: 825, maxWidth: {lg: 780, md: 600, sm: 500}}}></Box>
         <Grid display={'flex'} flex={1}>
           <Box sx={{ my: 8, mx: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', flex: '1'}}>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -86,8 +87,9 @@ export function Authentication() {
             <Box component="form" noValidate sx={{ mt: 1 }}>
               {formState === 1 ? <TextField margin="normal" required fullWidth label="Name" name="name" value={name} onChange={(e) => setName(e.target.value)} autoComplete="off"/> : <></>}
               <TextField margin="normal" required fullWidth label="Username" name="username" value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="off"/>
-              <TextField margin="normal" required fullWidth name="password" label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleLoginKeyPress}/>
+              <TextField margin="normal" required fullWidth name="password" label="Password" type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleLoginKeyPress}/>
               <p style={{ color: "red" }}>{error}</p>
+              <FormControlLabel control={<Checkbox onClick={() => setShowPassword(!showPassword)} />} label="Show password"/>
               <Button type="button" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} onClick={handleAuth}>
                 {formState === 0 ? "Login": "Register"}
               </Button>
@@ -96,7 +98,7 @@ export function Authentication() {
         </Grid>
       </Grid>
       <Snackbar open={open} autoHideDuration={700} onClose={() => setOpen(false)}>
-        <SnackbarContent style={{backgroundColor: "#fff", color: "#000"}} message={message} />
+        <SnackbarContent message={message} />
       </Snackbar>
     </ThemeProvider>
     );
