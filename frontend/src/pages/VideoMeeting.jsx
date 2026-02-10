@@ -566,13 +566,12 @@ export const VideoMeeting = () => {
                         <IconButton onClick={handleMuteMic}>
                             {muteMic === true ? <MicOffIcon sx={{fontSize: "35px"}} /> : <MicIcon sx={{fontSize: "35px"}}/>}
                         </IconButton>
-                        {/* {
-                        screenAvailable === true ? 
-                        } */}
+                        {
+                          screenAvailable === true ?
                             <IconButton onClick={() => setScreenSharing(!screenSharing)}>
                                 {screenSharing === true ? <StopScreenShareIcon sx={{fontSize: "40px"}} /> : <ScreenShareIcon sx={{fontSize: "40px"}}/>}
-                            </IconButton>
-                            {/* : <></> */}
+                            </IconButton> : <></>
+                        }
                         <Badge max={99} color="primary" overlap="circular" badgeContent={newMessages} anchorOrigin={{vertical: "top", horizontal: "right"}}>
                             <IconButton onClick={handleMessageBoxOpen}>
                                 <ChatIcon sx={{fontSize: "38px"}} />
