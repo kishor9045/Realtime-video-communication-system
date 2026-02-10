@@ -188,8 +188,8 @@ export const VideoMeeting = () => {
     try{
         if(socketRef.current) return;
 
-        socketRef.current = io("http://localhost:4000");
-        // socketRef.current = io("https://realtime-video-communication-system.onrender.com");
+        // socketRef.current = io("http://localhost:4000");
+        socketRef.current = io("https://realtime-video-communication-system.onrender.com");
 
         const iceServers = await handleIceServers();
 
@@ -198,9 +198,9 @@ export const VideoMeeting = () => {
             // path: "/peerjs",
             // port: '4000',
             // secure: false,
-            // host: "realtime-video-communication-system.onrender.com",
-            // path: "/peerjs",
-            // secure: true,
+            host: "realtime-video-communication-system.onrender.com",
+            path: "/peerjs",
+            secure: true,
             config: {
                 iceServers: iceServers,
                 iceTransportPolicy: "all"
