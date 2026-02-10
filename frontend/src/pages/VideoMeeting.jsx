@@ -207,8 +207,11 @@ export const VideoMeeting = () => {
             }
         });
         
-        socketRef.current.on("connect", () => {
+        if(socketRef.current.id){
             socketIdRef.current = socketRef.current.id;
+        }
+        socketRef.current.on("connect", () => {
+            console.log(socketRef.current.id)
         })
 
         if((videoAvailable && video) || (audioAvailable && audio)){
@@ -479,6 +482,19 @@ export const VideoMeeting = () => {
         }
     }
 
+    useEffect(() => {
+        const handleDropdownCloseOnOutsideClick = (event) => {
+            const copyLink = document.querySelector(".copyLink");
+            if(copyLink && !copyLink.contains(event.target)){
+                setInfo(false);
+                setJoinBoxOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleDropdownCloseOnOutsideClick);
+
+        return () => document.removeEventListener("mousedown", handleDropdownCloseOnOutsideClick);
+    }, []);
+
     return (
         <>
             {askForUsername === true ?
@@ -570,7 +586,9 @@ export const VideoMeeting = () => {
                                 <p>share this meeting link with others that you want to join.</p>
                                 <div>
                                     <p>{window.location.href}</p>
-                                    <IconButton onClick={handleLinkCopy}><ContentCopyIcon/></IconButton>
+                                    <IconButton onClick={handleLinkCopy}>
+                                        <ContentCopyIcon/>
+                                    </IconButton>
                                 </div>
                             </div>
                         </div>

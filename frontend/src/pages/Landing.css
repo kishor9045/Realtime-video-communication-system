@@ -57,7 +57,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     padding: 1.7rem;
 }
 
@@ -152,6 +152,7 @@ main div button:hover{
     .landingPageContainer main{
         padding: 0.7rem;
         margin-top: 1rem;
+        flex-wrap: wrap;
     }
     main .outer-wrap{
         padding: 0.7rem;
@@ -166,11 +167,13 @@ main div button:hover{
         font-size: 0.8rem;
     }
     .LandingRightImgContainer{
+        width: 100%;
         display: flex;
-        width: 330px;
+        justify-content: center;
     }
     main .mobileImg{
         padding: 0.5rem;
-        width: 100%;
+        /* width: 100%; */
+        width: 380px;
     }
 }

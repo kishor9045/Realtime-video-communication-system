@@ -9,11 +9,11 @@ const register = async (req, res) => {
     try{
         const {name, username, password} = req.body;
         if(!name || !username || !password){
-            return res.status(httpStatus.UNAUTHORIZED).json({message: "input fields are empty!"});
+            return res.status(httpStatus.UNAUTHORIZED).json({message: "Input fields are empty!"});
         }
         const existingUser = await User.findOne({username});
         if(existingUser){
-            return res.status(httpStatus.CONFLICT).json({message: "user already exists!"});
+            return res.status(httpStatus.CONFLICT).json({message: "User already exists!"});
         }
         const hashedPassword = await bcrypt.hash(password, 12);
         const createUser = new User({
@@ -22,9 +22,9 @@ const register = async (req, res) => {
             password: hashedPassword
         });
         await createUser.save();
-        res.status(httpStatus.CREATED).json({message: "user registered successful"});
+        res.status(httpStatus.CREATED).json({message: "User registered successful"});
     }catch(err){
-        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({message: `caught an error while register! ${err}`});
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({message: `Caught an error while register! ${err}`});
     }
 };
 
@@ -32,7 +32,7 @@ const login = async (req, res) => {
     try{
         const {username, password} = req.body;
         if(!username || !password){
-            return res.status(httpStatus.UNAUTHORIZED).json({message: "input fields are empty!"});
+            return res.status(httpStatus.UNAUTHORIZED).json({message: "Input fields are empty!"});
         }
         const user = await User.findOne({username});
         if(!user){
@@ -45,9 +45,9 @@ const login = async (req, res) => {
         const randomString = crypto.randomBytes(120).toString('hex');
         user.token = randomString;
         await user.save();
-        res.status(httpStatus.OK).json({message: "user logged in successful", token: randomString});
+        res.status(httpStatus.OK).json({message: "User logged in successful", token: randomString});
     }catch(err){
-        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({message: `caught an error while login! ${err}`});
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({message: `Caught an error while login! ${err}`});
     }
 };
 
@@ -59,14 +59,14 @@ const getHistory = async (req, res) => {
         }
         const user = await User.findOne({token: token});
         if(!user){
-            return res.json({message: "user token does'nt exists"});
+            return res.json({message: "User token does'nt exists"});
         }
         const meetings = await Meeting.find({userId: user.username});
         if(meetings){
             res.status(httpStatus.OK).json({meetings: meetings});
         }
     }catch(err){
-        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({message: `caught an error while getting history ${err}`});
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({message: `Caught an error while getting history ${err}`});
     }
 };
 
@@ -74,20 +74,20 @@ const addHistory = async (req, res) => {
     try{
         const {token, meetingCode} = req.body;
         if(!token && !meetingCode){
-            return res.json({message: "token or meetingCode is empty!"});
+            return res.json({message: "Token or meetingCode is empty!"});
         }
         const user = await User.findOne({token: token});
         if(!user){
-            return res.json({message: "user does'nt exists"});
+            return res.json({message: "User does'nt exists"});
         }
         const newMeeting = new Meeting({
             userId: user.username,
             meetingCode: meetingCode
         });
         await newMeeting.save();
-        res.status(httpStatus.CREATED).json({message: "meeting details is added successful!"});
+        res.status(httpStatus.CREATED).json({message: "Meeting details is added successful!"});
     }catch(err){
-        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({message: `caught an error while adding history ${err}`});
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({message: `Caught an error while adding history ${err}`});
     }
 }
 
@@ -99,7 +99,7 @@ const turnServer = async (req, res) => {
             res.status(httpStatus.OK).json(token.iceServers);
         }
     }catch(err){
-        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({message: `caught an error while getting turn server ${err}`});
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).json({message: `Caught an error while getting turn server ${err}`});
     }
 }
 
