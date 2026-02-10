@@ -188,8 +188,8 @@ export const VideoMeeting = () => {
     try{
         if(socketRef.current) return;
 
-        // socketRef.current = io("http://localhost:4000");
-        socketRef.current = io("https://realtime-video-communication-system.onrender.com");
+        socketRef.current = io("http://localhost:4000");
+        // socketRef.current = io("https://realtime-video-communication-system.onrender.com");
 
         const iceServers = await handleIceServers();
 
@@ -198,9 +198,9 @@ export const VideoMeeting = () => {
             // path: "/peerjs",
             // port: '4000',
             // secure: false,
-            host: "realtime-video-communication-system.onrender.com",
-            path: "/peerjs",
-            secure: true,
+            // host: "realtime-video-communication-system.onrender.com",
+            // path: "/peerjs",
+            // secure: true,
             config: {
                 iceServers: iceServers,
                 iceTransportPolicy: "all"
@@ -208,9 +208,13 @@ export const VideoMeeting = () => {
         });
         
         if(socketRef.current.id){
+            socketIdRef.current = "";
             socketIdRef.current = socketRef.current.id;
+            console.log(socketRef.current.id)
         }
         socketRef.current.on("connect", () => {
+            socketIdRef.current = "";
+            socketIdRef.current = socketRef.current.id;
             console.log(socketRef.current.id)
         })
 
@@ -485,8 +489,11 @@ export const VideoMeeting = () => {
     useEffect(() => {
         const handleDropdownCloseOnOutsideClick = (event) => {
             const copyLink = document.querySelector(".copyLink");
+            const joinedUsers = document.querySelector(".joinedUsers");
             if(copyLink && !copyLink.contains(event.target)){
                 setInfo(false);
+            }
+            if(joinedUsers && !joinedUsers.contains(event.target)){
                 setJoinBoxOpen(false);
             }
         }
@@ -559,12 +566,13 @@ export const VideoMeeting = () => {
                         <IconButton onClick={handleMuteMic}>
                             {muteMic === true ? <MicOffIcon sx={{fontSize: "35px"}} /> : <MicIcon sx={{fontSize: "35px"}}/>}
                         </IconButton>
-                        {
+                        {/* {
                         screenAvailable === true ? 
+                        } */}
                             <IconButton onClick={() => setScreenSharing(!screenSharing)}>
                                 {screenSharing === true ? <StopScreenShareIcon sx={{fontSize: "40px"}} /> : <ScreenShareIcon sx={{fontSize: "40px"}}/>}
-                            </IconButton>: <></>
-                        }
+                            </IconButton>
+                            {/* : <></> */}
                         <Badge max={99} color="primary" overlap="circular" badgeContent={newMessages} anchorOrigin={{vertical: "top", horizontal: "right"}}>
                             <IconButton onClick={handleMessageBoxOpen}>
                                 <ChatIcon sx={{fontSize: "38px"}} />
