@@ -372,6 +372,31 @@
 }
 
 @media (max-aspect-ratio : 6/10){
+    .beforeOuterContainer h1{
+        font-size: 1.5rem;
+    }
+    .beforeContainer{
+        flex-wrap: wrap;
+    }
+    .beforeVideoContainer video{
+        width: 100%;
+    }
+    .beforeFormContainer{
+        padding: 0;
+    }
+    .beforeFormContainer img{
+        display: none;
+    }
+    .beforeFormContainer h2{
+        font-size: 1.2rem;
+        margin: 1rem 0;
+    }
+    .beforeFormContainer br{
+        display: none;
+    }
+    .beforeFormContainer button{
+        margin-top: 0.5rem;
+    }
     .bottomHorizontalContainer{
         padding: 0 1rem;
         align-items: center;

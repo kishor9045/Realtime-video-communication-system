@@ -105,6 +105,9 @@
   .homeNavbar div:nth-child(2){
     gap: 0.8rem;
   }
+  .HomeLeftPanel h1{
+    font-size: 1.5rem;
+  }
   .HomeRightPanel img{
     height: 300px;
   }
